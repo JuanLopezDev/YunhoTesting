@@ -1,0 +1,88 @@
+<!-- Cargar Google Chart -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<!-- Contenedor -->
+<div id="my-content"></div>
+
+<!-- Funciones -->
+<script>
+google.load('visualization', '1', {
+    packages: ['corechart']
+});
+google.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('date', 'X');
+    data.addColumn('number', 'Nro. Post');
+
+    data.addRows([
+        [new Date(2014, 2, 1), 1],
+        [new Date(2014, 2, 2), 5],
+        [new Date(2014, 2, 3), 3],
+        [new Date(2014, 2, 4), 5],
+        [new Date(2014, 2, 5), 6],
+        [new Date(2014, 2, 6), 2],
+        [new Date(2014, 2, 7), 3],
+        [new Date(2014, 2, 8), 5],
+        [new Date(2014, 2, 9), 8],
+        [new Date(2014, 2, 10), 9],
+        [new Date(2014, 2, 11), 2],
+        [new Date(2014, 2, 12), 23],
+        [new Date(2014, 2, 13), 3],
+        [new Date(2014, 2, 14), 4],
+        [new Date(2014, 2, 15), 1],
+        [new Date(2014, 2, 16), 2],
+        [new Date(2014, 2, 17), 3],
+        [new Date(2014, 2, 18), 1],
+        [new Date(2014, 2, 19), 3],
+        [new Date(2014, 2, 20), 0],
+        [new Date(2014, 2, 21), 3],
+        [new Date(2014, 2, 22), 5],
+        [new Date(2014, 2, 23), 7],
+        [new Date(2014, 2, 24), 8],
+        [new Date(2014, 2, 25), 0],
+        [new Date(2014, 2, 26), 3],
+        [new Date(2014, 2, 27), 5],
+        [new Date(2014, 2, 28), 2]
+    ]);
+
+    /*
+     * Formato de fecha
+     *
+     * Valores:
+     *  formatType: "short", "medium", "long" or ICU date and time format
+     *  pattern: ejm. "d/MM/yyyy"
+     *  
+     * Fuente: 
+     *  https://developers.google.com/chart/interactive/docs/reference | Buscar: "More About Date Patterns"
+     *  http://stackoverflow.com/questions/6136557/google-charts-date-formats
+     */
+    var format_date = new google.visualization.DateFormat({
+        pattern: "d/MM/yyyy"
+    });
+
+    /*
+     * Asignar formato al valor
+     */
+    format_date.format(data, 0);
+
+    var options = {
+        width: 600,
+        height: 400,
+        hAxis: {
+            title: 'Fecha',
+            format: 'd/MM/yyyy'
+        },
+        vAxis: {
+            title: 'Posts'
+        }
+    };
+
+    // Construir  chart
+    var chart = new google.visualization.LineChart(document.getElementById('my-content'));
+    chart.draw(data, options);
+
+}
+</script>
