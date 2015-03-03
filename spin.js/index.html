@@ -1,0 +1,35 @@
+<!--
+URL: http://fgnass.github.io/spin.js/
+Spin.js crea dinámicamente los indicadores de actividad de spinning que se pueden utilizar como reemplazo independiente de la resolución para AJAX GIFs de carga.
+-->
+
+<div id="foo">
+
+</div>
+
+<script type="text/javascript" src="src/spin.min.js"></script>
+
+<script type="text/javascript">
+var opts = {
+  lines: 13, // El número de líneas para dibujar
+  length: 20, // Longitud de cada linea
+  width: 10, // El grosor de la línea
+  radius: 30, // El radio del círculo interior
+  corners: 1, // Borde redondeado de las esquinas
+  rotate: 0, // Rotacion
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#000', // #rgb or #rrggbb or array of colors
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow porcentaje
+  shadow: false, // Sombra
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: '50%', // Top position relative to parent
+  left: '50%' // Left position relative to parent
+};
+
+var target = document.getElementById('foo');
+var spinner = new Spinner(opts).spin(target);
+
+</script>
